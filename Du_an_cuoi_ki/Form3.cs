@@ -1,4 +1,4 @@
-﻿using MediaPlayer;
+using MediaPlayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +21,7 @@ namespace Du_an_cuoi_ki
         WindowsMediaPlayer Nhac_nen;
         int player_speed = 4;
         int td_roi=4;
-        int diem = 1;
+        int diem = 3;
         string[,] bang_xep_hang = new string[10, 10];
         Image Rac1 = Image.FromFile("Picture\\Rác 1.png");
         Image Rac2 = Image.FromFile("Picture\\Rác 2.png");
@@ -54,6 +54,7 @@ namespace Du_an_cuoi_ki
 
         private void GameOver()
         {
+            RacDichuyen.Stop();
             Nhac_nen.controls.stop();
             Thua.Visible = true;
         }
@@ -170,20 +171,23 @@ namespace Du_an_cuoi_ki
         {
             if (diem == null) return;
             diem = diem + 5;
+            diem1.Text = $"Diem:{diem}";
             An_diem.controls.play();
             An_diem.settings.volume = 20;
         }
         public void Tru_nhe()
         {
             diem = diem - 3;
+            diem1.Text = $"Diem:{diem}";
             Tru_diem_nhe.controls.play();
-            Tru_diem_nhe.settings.volume = 20;
+            Tru_diem_nhe.settings.volume = 50;
         }
         public void Tru_nang()
         {
             diem = diem - 5;
+            diem1.Text = $"Diem:{diem}";
             Tru_diem_nang.controls.play();
-            Tru_diem_nang.settings.volume = 20;
+            Tru_diem_nang.settings.volume = 50;
         }
 
         private void RacDichuyen_Tick_1(object sender, EventArgs e)
@@ -209,15 +213,27 @@ namespace Du_an_cuoi_ki
                 {
                     // Logic tăng/giảm điểm
                     if (Player1.Visible == true && rac.Image == Rac1) Tang_diem();
-                    else if (Player2.Visible == true && rac.Image == Rac2) Tang_diem();
-                    else if (Player3.Visible == true && rac.Image == Rac3) Tang_diem();
                     else Tru_nhe();
-
                     // Xóa rác sau va chạm
                     this.Controls.Remove(rac);
                     racList.Remove(rac);
                 }
+                else if (rac.Bounds.IntersectsWith(Player2.Bounds))
+                {
+                    if (Player2.Visible == true && rac.Image == Rac2) Tang_diem();
+                    else Tru_nhe();
+                    this.Controls.Remove(rac);
+                    racList.Remove(rac);
+                }
+                else if (rac.Bounds.IntersectsWith(Player3.Bounds))
+                {
+                    if (Player3.Visible == true && rac.Image == Rac3) Tang_diem();
+                    Tru_nhe();
+                    this.Controls.Remove(rac);
+                    racList.Remove(rac);
+                }
             }
+            if (diem < 0) GameOver();
             if (racList.Count <3)
             {
                 SpawnRac();
