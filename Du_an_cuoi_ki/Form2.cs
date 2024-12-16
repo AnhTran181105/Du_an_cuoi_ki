@@ -32,5 +32,10 @@ namespace Du_an_cuoi_ki
             Form form = new Gameplay();
             form.ShowDialog();
         }
+
+        private void Dang_nhap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

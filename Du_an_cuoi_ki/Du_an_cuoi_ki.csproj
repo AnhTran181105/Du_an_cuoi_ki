@@ -77,18 +77,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -144,6 +144,222 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Picture\Game over.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\broken-glass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rac1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\can.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\canned-food %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\canned-food.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chopsticks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%287%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\facemask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\face-mask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\food-waste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-mc-correct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-mc-incorrect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garbage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gc-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaf-fall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaves %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light-bulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maple-leaf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\milk-box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newspaper %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newspaper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organic-waste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plastic-bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plastic-bottle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recycle-bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-wine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\straws.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\styrofoam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tissue-paper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toilet-paper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-can.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-mc-correct1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chủ thể%282%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-can1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trừ điểm nhẹ.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trừ điểm nặng.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fgs.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recycle-bin1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organic-waste1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-can2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
