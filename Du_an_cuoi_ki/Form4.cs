@@ -37,7 +37,7 @@ namespace Du_an_cuoi_ki
                     for (int i = 0; i < lines.Length; i++)
                     { 
                         var line = lines[i];
-                        var column = line.Split( );
+                        var column = line.Split(    );
                         if (column.Length == 3)
                         {
                             bang_xep_hang.Rows.Add(i + 1, column[0], column[1]);
