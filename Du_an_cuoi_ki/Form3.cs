@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
+using System.IO;
 
 namespace Du_an_cuoi_ki
 {
@@ -24,7 +25,9 @@ namespace Du_an_cuoi_ki
         int player_speed = 4;
         int td_roi=4;
         int diem = 30;
+        int diem_max = 0;
         string[,] bang_xep_hang = new string[10, 10];
+        string Ten_nguoi_choi;
         Image Rac1 = Properties.Resources.rac1;
         Image Rac2 = Properties.Resources.rac2;
         Image Rac3 = Properties.Resources.rac3;
@@ -37,9 +40,11 @@ namespace Du_an_cuoi_ki
         Image[] RacDanhMuc1 = { Properties.Resources.rac1, Properties.Resources.rac2, Properties.Resources.rac3, Properties.Resources.rac4, Properties.Resources.rac5 };
         Image[] RacDanhMuc2 = { Properties.Resources.rac6, Properties.Resources.rac7, Properties.Resources.rac8, Properties.Resources.rac9, Properties.Resources.rac10 };
         Image[] RacDanhMuc3 = { Properties.Resources.rac11, Properties.Resources.rac12, Properties.Resources.rac13, Properties.Resources.rac14, Properties.Resources.rac15 };
-        public Gameplay()
+        public Gameplay(string ten)
         {
             InitializeComponent();
+            //Ten nguoi choi
+            Ten_nguoi_choi = ten;
             // Them am thanh
             An_diem = new WindowsMediaPlayer();
             Tru_diem_nhe = new WindowsMediaPlayer();
@@ -58,6 +63,35 @@ namespace Du_an_cuoi_ki
             UpdateLevelDisplay();
             SpawnRac();
         }
+        void Thanh_tich(string file)
+        {
+            try
+            {
+                string [] bang_phu = File.ReadAllLines(file);
+                for (int i = 0; i < bang_phu.Length;i++)
+                {
+                    string[] columns = bang_phu[i].Split('\t');
+                    for (int j = 0; j < columns.Length; j++)
+                    {
+                        bang_xep_hang[i, j] = columns[j].Trim(); 
+                    }
+                }
+            }
+            catch (Exception ex) {MessageBox.Show("Đã xảy ra lỗi"); }
+        }
+        void Ghi_nhan(string file)
+        {
+            File.Delete(file);
+            for(int i = 0;i<bang_xep_hang.GetLength(0);i++)
+            {
+                string[] row = new string[bang_xep_hang.GetLength(1)];
+                for (int j = 0; j < bang_xep_hang.GetLength(1); j++) // Số cột
+                {
+                    row[j] = bang_xep_hang[i, j];
+                }
+                File.AppendAllText(file, string.Join("\t", row) + "\n");
+            }    
+        }
 
         private void GameOver()
         {
@@ -66,7 +100,17 @@ namespace Du_an_cuoi_ki
             label1.Visible = true;
             exit.Visible = true;
             REPLAY.Visible = true;
-            
+            for (int i = 0; i <10; i++)
+            {
+                if (bang_xep_hang[i, 1] == "") bang_xep_hang[i, 1] = "0";
+                if (diem_max > int.Parse(bang_xep_hang[i,1]))
+                {
+                    bang_xep_hang[i, 1] = diem_max.ToString();
+                    bang_xep_hang[i,0] = Ten_nguoi_choi;
+                }
+            }
+            Ghi_nhan("ThanhTich.txt");
+
         }
 
         private void RightMove_Tick(object sender, EventArgs e)
@@ -233,7 +277,7 @@ namespace Du_an_cuoi_ki
         {
             if (diem == null) return;
             diem = diem + 5;
-            
+            if (diem > diem_max) diem_max = diem;
             An_diem.controls.play();
             An_diem.settings.volume = 20;
             Scorelabel.Visible = true;
@@ -307,7 +351,7 @@ namespace Du_an_cuoi_ki
                 }
             }
 
-            if (diem < 0) GameOver();
+            if (diem <= 0) GameOver();
             if (racList.Count < 3)
             {
                 SpawnRac(); // Tạo thêm rác khi số lượng ít
@@ -347,7 +391,8 @@ namespace Du_an_cuoi_ki
 
         private void Gameplay_Load(object sender, EventArgs e)
         {
-
+            label3.Text = Ten_nguoi_choi;
+            Thanh_tich("ThanhTich.txt");
         }
 
         private void REPLAY_Click(object sender, EventArgs e)
@@ -362,7 +407,6 @@ namespace Du_an_cuoi_ki
             Environment.Exit(1);
         }
 
-
-
+        
     }
 }

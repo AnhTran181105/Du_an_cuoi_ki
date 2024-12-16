@@ -12,6 +12,7 @@ namespace Du_an_cuoi_ki
 {
     public partial class Eco : Form
     {
+        string[,] bang_xep_hang= new string[10,10];
         
         public Eco()
         {
@@ -33,7 +34,8 @@ namespace Du_an_cuoi_ki
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Form form1= new Form4();
+            form1.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

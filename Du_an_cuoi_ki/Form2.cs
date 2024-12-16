@@ -12,14 +12,16 @@ namespace Du_an_cuoi_ki
 {
     public partial class Dang_nhap : Form
     {
+        string ten;
         public Dang_nhap()
         {
+ 
             InitializeComponent();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string ten=textBox1.Text;
+            ten=textBox1.Text;
             if (ten.Length > 10)
             {
                 MessageBox.Show("Vui long nhap ten khong qua 10 ki tu", "Loi", MessageBoxButtons.OK);
@@ -29,7 +31,7 @@ namespace Du_an_cuoi_ki
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form form = new Gameplay();
+            Form form = new Gameplay(ten);
             form.ShowDialog();
         }
 
