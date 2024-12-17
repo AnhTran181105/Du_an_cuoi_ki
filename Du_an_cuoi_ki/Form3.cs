@@ -17,6 +17,11 @@ namespace Du_an_cuoi_ki
     {
         //Các biến
         bool pause = false;
+        int highestscore = 0;
+        int player_speed = 4;
+        int td_roi = 4;
+        int diem = 10;
+        int sorachungdung;
         // Them reference
         WindowsMediaPlayer An_diem;
         WindowsMediaPlayer Tru_diem_nhe;
@@ -37,10 +42,8 @@ namespace Du_an_cuoi_ki
             nhacnen.settings.setMode("loop", true); // Lặp lại nhạc nền
             nhacnen.controls.play();
         }
-        int player_speed = 4;
-        int td_roi = 4;
-        int diem = 30;
-        int sorachungdung;
+
+
         string[,] bang_xep_hang = new string[10, 10];
         private List<PictureBox> racList = new List<PictureBox>();
         private Random rnd = new Random();
@@ -69,6 +72,8 @@ namespace Du_an_cuoi_ki
             UpdateLevelDisplay();
             SpawnRac();
             KhoiTaoAmThanh();
+            Scorelabel.Visible = true;
+            
         }
 
         private void GameOver()
@@ -78,6 +83,7 @@ namespace Du_an_cuoi_ki
             label1.Visible = true;
             exit.Visible = true;
             REPLAY.Visible = true;
+            Scorelabel.Text = "Score: 0";
 
         }
 
@@ -247,17 +253,17 @@ namespace Du_an_cuoi_ki
         {
             if (diem == null) return;
             diem = diem + 5;
-            int highestscore =+ diem;
+            highestscore += diem;
             sorachungdung++;
             An_diem.controls.play();
             An_diem.settings.volume = 20;
-            Scorelabel.Visible = true;
+            
             Scorelabel.Text = $"Score: {diem}";
-            if (highestscore - 30 >= pointsToNextLevel)
+            if (highestscore - 10 >= pointsToNextLevel)
             {
                 level++; // Tăng cấp độ
                 pointsToNextLevel += 30; // Tăng ngưỡng điểm cho cấp độ tiếp theo
-                td_roi += level; // Tăng tốc độ rơi rác
+                td_roi += 1; // Tăng tốc độ rơi rács
                 UpdateLevelDisplay(); // Cập nhật giao diện cấp độ
             }
             message.Visible = true;
@@ -375,7 +381,13 @@ namespace Du_an_cuoi_ki
             {
                 this.Controls.Clear();
                 InitializeComponent();
-                
+                // Create a new instance of the Gameplay form to reset everything
+                S
+      
+        
+        // Show the new instance of the Gameplay form
+             newGame.Show();
+
             }
             catch (Exception ex)
             {
