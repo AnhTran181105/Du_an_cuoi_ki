@@ -35,7 +35,7 @@ namespace Du_an_cuoi_ki
         Image Rac3 = Properties.Resources.rac3;
         private List<PictureBox> racList = new List<PictureBox>();
         private Random rnd = new Random();
-
+        string filePath = Path.Combine(Application.StartupPath, "ThanhTich.txt");
         // Gioi han duoi
         Label bottomBorder = new Label();
         int level = 1; // Cấp độ hiện tại
@@ -63,6 +63,8 @@ namespace Du_an_cuoi_ki
             Nhac_nen.URL = "Sound\\Nhạc nền.mp3";
             Scorelabel.Text = $"Diem:{diem}";
             label3.Text = $"{Ten_nguoi_choi}";
+            Scorelabel.Visible = true;
+            label3 .Visible = true;
             UpdateLevelDisplay();
             SpawnRac();
         }
@@ -73,7 +75,7 @@ namespace Du_an_cuoi_ki
                 string [] bang_phu = File.ReadAllLines(file);
                 for (int i = 0; i < bang_phu.Length;i++)
                 {
-                    string[] columns = bang_phu[i].Split('\t');
+                    string[] columns = bang_phu[i].Split(',');
                     for (int j = 0; j < columns.Length; j++)
                     {
                         bang_xep_hang[i, j] = columns[j].Trim(); 
@@ -84,7 +86,6 @@ namespace Du_an_cuoi_ki
         }
         void Ghi_nhan(string file)
         {
-            File.Delete(file);
             for(int i = 0;i<bang_xep_hang.GetLength(0);i++)
             {
                 string[] row = new string[bang_xep_hang.GetLength(1)];
@@ -92,7 +93,7 @@ namespace Du_an_cuoi_ki
                 {
                     row[j] = bang_xep_hang[i, j];
                 }
-                File.AppendAllText(file, string.Join("\t", row) + "\n");
+                File.AppendAllText(file, string.Join(",", row) + "\n");
             }    
         }
 
@@ -114,7 +115,7 @@ namespace Du_an_cuoi_ki
                     bang_xep_hang[i,0] = Ten_nguoi_choi;
                 }
             }
-            Ghi_nhan("ThanhTich.txt");
+            Ghi_nhan(filePath);
 
         }
 
@@ -313,7 +314,7 @@ namespace Du_an_cuoi_ki
             {
                 Tru_diem_nhe.controls.stop();
                 Tru_diem_nhe.controls.play();
-                Tru_diem_nhe.settings.volume = 100;
+                Tru_diem_nhe.settings.volume = 1;
             }
 
             diem -= 3;
@@ -329,7 +330,7 @@ namespace Du_an_cuoi_ki
                 Tru_diem_nang.settings.volume = 100;
             }
 
-            diem -= 1;
+            diem -= 100;
             Scorelabel.Text = $"Score: {diem}";
         }
 
@@ -412,7 +413,7 @@ namespace Du_an_cuoi_ki
         private void Gameplay_Load(object sender, EventArgs e)
         {
             label3.Text = Ten_nguoi_choi;
-            Thanh_tich("ThanhTich.txt");
+            Thanh_tich(filePath);
         }
 
         private void REPLAY_Click(object sender, EventArgs e)

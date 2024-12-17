@@ -41,9 +41,11 @@ namespace Du_an_cuoi_ki
                 Name = "Thanh_tich",
                 ReadOnly = true
             };
-
+            
             // Thêm các cột vào DataGridView
             bang_xep_hang.Columns.AddRange(new DataGridViewColumn[] { STT, Ten, Thanh_tich });
+            bang_xep_hang.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            bang_xep_hang.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
         }
 
         // Hàm đọc dữ liệu từ file và hiển thị lên DataGridView
@@ -60,7 +62,7 @@ namespace Du_an_cuoi_ki
                     for (int i = 0; i < lines.Length; i++)
                     {
                         var line = lines[i];
-                        var columns = line.Split('\t'); // Sử dụng ký tự tab làm dấu phân tách
+                        var columns = line.Split(','); // Sử dụng ký tự tab làm dấu phân tách
 
                         if (columns.Length >= 2) // Kiểm tra đủ 2 cột: Tên và Thành tích
                         {
@@ -82,7 +84,9 @@ namespace Du_an_cuoi_ki
         private void Form4_Load(object sender, EventArgs e)
         {
             TaoBang(); // Tạo cấu trúc bảng
-            Doc_File("Du_an_cuoi_ki\\ThanhTich.txt"); // Đọc dữ liệu từ file
+            Doc_File("Resources\\ThanhTich.txt"); // Đọc dữ liệu từ file
+           
         }
+        
     }
 }
