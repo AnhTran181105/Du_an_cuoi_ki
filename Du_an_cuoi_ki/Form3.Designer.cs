@@ -39,10 +39,11 @@
             this.Scorelabel = new System.Windows.Forms.Label();
             this.message = new System.Windows.Forms.Label();
             this.LevelLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.Player1 = new System.Windows.Forms.PictureBox();
             this.Player3 = new System.Windows.Forms.PictureBox();
             this.Player2 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.BXH = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player2)).BeginInit();
@@ -70,9 +71,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Playbill", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label1.Location = new System.Drawing.Point(106, 25);
+            this.label1.Location = new System.Drawing.Point(141, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 65);
+            this.label1.Size = new System.Drawing.Size(285, 81);
             this.label1.TabIndex = 3;
             this.label1.Text = "GAME OVER";
             this.label1.Visible = false;
@@ -80,9 +82,10 @@
             // exit
             // 
             this.exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exit.Location = new System.Drawing.Point(144, 127);
+            this.exit.Location = new System.Drawing.Point(192, 156);
+            this.exit.Margin = new System.Windows.Forms.Padding(4);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(166, 38);
+            this.exit.Size = new System.Drawing.Size(221, 47);
             this.exit.TabIndex = 4;
             this.exit.Text = "EXIT";
             this.exit.UseVisualStyleBackColor = true;
@@ -92,9 +95,10 @@
             // REPLAY
             // 
             this.REPLAY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.REPLAY.Location = new System.Drawing.Point(144, 171);
+            this.REPLAY.Location = new System.Drawing.Point(192, 210);
+            this.REPLAY.Margin = new System.Windows.Forms.Padding(4);
             this.REPLAY.Name = "REPLAY";
-            this.REPLAY.Size = new System.Drawing.Size(166, 39);
+            this.REPLAY.Size = new System.Drawing.Size(221, 48);
             this.REPLAY.TabIndex = 5;
             this.REPLAY.Text = "REPLAY";
             this.REPLAY.UseVisualStyleBackColor = true;
@@ -107,9 +111,10 @@
             this.Scorelabel.BackColor = System.Drawing.Color.DarkGreen;
             this.Scorelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Scorelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.Scorelabel.Location = new System.Drawing.Point(13, 4);
+            this.Scorelabel.Location = new System.Drawing.Point(17, 5);
+            this.Scorelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Scorelabel.Name = "Scorelabel";
-            this.Scorelabel.Size = new System.Drawing.Size(77, 24);
+            this.Scorelabel.Size = new System.Drawing.Size(96, 29);
             this.Scorelabel.TabIndex = 6;
             this.Scorelabel.Text = "Score: ";
             this.Scorelabel.Visible = false;
@@ -119,11 +124,12 @@
             this.message.AutoSize = true;
             this.message.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.message.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.message.Location = new System.Drawing.Point(12, 352);
+            this.message.Location = new System.Drawing.Point(16, 433);
+            this.message.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.message.Name = "message";
-            this.message.Size = new System.Drawing.Size(148, 15);
+            this.message.Size = new System.Drawing.Size(171, 18);
             this.message.TabIndex = 7;
-            this.message.Text = "So rac da hung dung: ";
+            this.message.Text = "QUY TAC PHAN LOAI";
             this.message.Visible = false;
             // 
             // LevelLabel
@@ -131,12 +137,46 @@
             this.LevelLabel.AutoSize = true;
             this.LevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LevelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.LevelLabel.Location = new System.Drawing.Point(342, 14);
+            this.LevelLabel.Location = new System.Drawing.Point(456, 17);
+            this.LevelLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LevelLabel.Name = "LevelLabel";
-            this.LevelLabel.Size = new System.Drawing.Size(70, 20);
+            this.LevelLabel.Size = new System.Drawing.Size(86, 25);
             this.LevelLabel.TabIndex = 8;
             this.LevelLabel.Text = "LEVEL:";
             this.LevelLabel.Visible = false;
+            // 
+            // Player1
+            // 
+            this.Player1.Image = global::Du_an_cuoi_ki.Properties.Resources.recycle_bin;
+            this.Player1.Location = new System.Drawing.Point(252, 358);
+            this.Player1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Player1.Name = "Player1";
+            this.Player1.Size = new System.Drawing.Size(84, 81);
+            this.Player1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Player1.TabIndex = 0;
+            this.Player1.TabStop = false;
+            // 
+            // Player3
+            // 
+            this.Player3.Image = global::Du_an_cuoi_ki.Properties.Resources.trash_can;
+            this.Player3.Location = new System.Drawing.Point(252, 358);
+            this.Player3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Player3.Name = "Player3";
+            this.Player3.Size = new System.Drawing.Size(84, 79);
+            this.Player3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Player3.TabIndex = 2;
+            this.Player3.TabStop = false;
+            // 
+            // Player2
+            // 
+            this.Player2.Image = global::Du_an_cuoi_ki.Properties.Resources.organic_waste;
+            this.Player2.Location = new System.Drawing.Point(252, 358);
+            this.Player2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Player2.Name = "Player2";
+            this.Player2.Size = new System.Drawing.Size(80, 81);
+            this.Player2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Player2.TabIndex = 1;
+            this.Player2.TabStop = false;
             // 
             // label3
             // 
@@ -144,52 +184,34 @@
             this.label3.BackColor = System.Drawing.Color.DarkGreen;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label3.Location = new System.Drawing.Point(13, 28);
+            this.label3.Location = new System.Drawing.Point(17, 34);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 24);
+            this.label3.Size = new System.Drawing.Size(96, 29);
             this.label3.TabIndex = 10;
             this.label3.Text = "Score: ";
             this.label3.Visible = false;
             // 
-            // Player1
+            // BXH
             // 
-            this.Player1.Image = global::Du_an_cuoi_ki.Properties.Resources.organic_waste1;
-            this.Player1.Location = new System.Drawing.Point(186, 291);
-            this.Player1.Margin = new System.Windows.Forms.Padding(2);
-            this.Player1.Name = "Player1";
-            this.Player1.Size = new System.Drawing.Size(63, 66);
-            this.Player1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Player1.TabIndex = 0;
-            this.Player1.TabStop = false;
-            // 
-            // Player3
-            // 
-            this.Player3.Image = global::Du_an_cuoi_ki.Properties.Resources.trash_9787077;
-            this.Player3.Location = new System.Drawing.Point(186, 291);
-            this.Player3.Margin = new System.Windows.Forms.Padding(2);
-            this.Player3.Name = "Player3";
-            this.Player3.Size = new System.Drawing.Size(63, 64);
-            this.Player3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Player3.TabIndex = 2;
-            this.Player3.TabStop = false;
-            // 
-            // Player2
-            // 
-            this.Player2.Image = global::Du_an_cuoi_ki.Properties.Resources.recycle_bin;
-            this.Player2.Location = new System.Drawing.Point(189, 291);
-            this.Player2.Margin = new System.Windows.Forms.Padding(2);
-            this.Player2.Name = "Player2";
-            this.Player2.Size = new System.Drawing.Size(60, 66);
-            this.Player2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Player2.TabIndex = 1;
-            this.Player2.TabStop = false;
+            this.BXH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BXH.Location = new System.Drawing.Point(192, 266);
+            this.BXH.Margin = new System.Windows.Forms.Padding(4);
+            this.BXH.Name = "BXH";
+            this.BXH.Size = new System.Drawing.Size(221, 48);
+            this.BXH.TabIndex = 11;
+            this.BXH.Text = "Bảng Xếp Hạng";
+            this.BXH.UseVisualStyleBackColor = true;
+            this.BXH.Visible = false;
+            this.BXH.Click += new System.EventHandler(this.button1_Click);
             // 
             // Gameplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(436, 368);
+            this.ClientSize = new System.Drawing.Size(581, 453);
+            this.Controls.Add(this.BXH);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LevelLabel);
             this.Controls.Add(this.message);
@@ -201,7 +223,7 @@
             this.Controls.Add(this.Player3);
             this.Controls.Add(this.Player2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Gameplay";
             this.Text = "EcoQuest UEH";
             this.Load += new System.EventHandler(this.Gameplay_Load);
@@ -230,5 +252,6 @@
         private System.Windows.Forms.Label message;
         private System.Windows.Forms.Label LevelLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BXH;
     }
 }
