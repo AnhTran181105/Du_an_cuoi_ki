@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
-using System.IO;
 
 namespace Du_an_cuoi_ki
 {
@@ -23,28 +22,21 @@ namespace Du_an_cuoi_ki
         WindowsMediaPlayer Tru_diem_nang;
         WindowsMediaPlayer Nhac_nen;
         int player_speed = 4;
-        int td_roi=4;
+        int td_roi = 4;
         int diem = 30;
-        int diem_max = 0;
         string[,] bang_xep_hang = new string[10, 10];
-        string Ten_nguoi_choi;
-        Image Rac1 = Properties.Resources.rac1;
-        Image Rac2 = Properties.Resources.rac2;
-        Image Rac3 = Properties.Resources.rac3;
         private List<PictureBox> racList = new List<PictureBox>();
         private Random rnd = new Random();
         // Gioi han duoi
         Label bottomBorder = new Label();
         int level = 1; // Cấp độ hiện tại
         int pointsToNextLevel = 30; // Số điểm cần để lên cấp
-        Image[] RacDanhMuc1 = { Properties.Resources.rac1, Properties.Resources.rac2, Properties.Resources.rac3, Properties.Resources.rac4, Properties.Resources.rac5 };
-        Image[] RacDanhMuc2 = { Properties.Resources.rac6, Properties.Resources.rac7, Properties.Resources.rac8, Properties.Resources.rac9, Properties.Resources.rac10 };
-        Image[] RacDanhMuc3 = { Properties.Resources.rac11, Properties.Resources.rac12, Properties.Resources.rac13, Properties.Resources.rac14, Properties.Resources.rac15 };
-        public Gameplay(string ten)
+        Image[] RacDanhMuc1 = { Properties.Resources.rac1, Properties.Resources.rac5, Properties.Resources.rac2, Properties.Resources.rac4, Properties.Resources.rac3 }; //huu co
+        Image[] RacDanhMuc2 = { Properties.Resources.rac6, Properties.Resources.rac7, Properties.Resources.rac8, Properties.Resources.rac9, Properties.Resources.rac10 }; //tai che
+        Image[] RacDanhMuc3 = { Properties.Resources.rac11, Properties.Resources.rac12, Properties.Resources.rac13, Properties.Resources.rac14, Properties.Resources.rac15 }; //conlai
+        public Gameplay()
         {
             InitializeComponent();
-            //Ten nguoi choi
-            Ten_nguoi_choi = ten;
             // Them am thanh
             An_diem = new WindowsMediaPlayer();
             Tru_diem_nhe = new WindowsMediaPlayer();
@@ -63,35 +55,6 @@ namespace Du_an_cuoi_ki
             UpdateLevelDisplay();
             SpawnRac();
         }
-        void Thanh_tich(string file)
-        {
-            try
-            {
-                string [] bang_phu = File.ReadAllLines(file);
-                for (int i = 0; i < bang_phu.Length;i++)
-                {
-                    string[] columns = bang_phu[i].Split('\t');
-                    for (int j = 0; j < columns.Length; j++)
-                    {
-                        bang_xep_hang[i, j] = columns[j].Trim(); 
-                    }
-                }
-            }
-            catch (Exception ex) {MessageBox.Show("Đã xảy ra lỗi"); }
-        }
-        void Ghi_nhan(string file)
-        {
-            File.Delete(file);
-            for(int i = 0;i<bang_xep_hang.GetLength(0);i++)
-            {
-                string[] row = new string[bang_xep_hang.GetLength(1)];
-                for (int j = 0; j < bang_xep_hang.GetLength(1); j++) // Số cột
-                {
-                    row[j] = bang_xep_hang[i, j];
-                }
-                File.AppendAllText(file, string.Join("\t", row) + "\n");
-            }    
-        }
 
         private void GameOver()
         {
@@ -100,16 +63,6 @@ namespace Du_an_cuoi_ki
             label1.Visible = true;
             exit.Visible = true;
             REPLAY.Visible = true;
-            for (int i = 0; i <10; i++)
-            {
-                if (bang_xep_hang[i, 1] == "") bang_xep_hang[i, 1] = "0";
-                if (diem_max > int.Parse(bang_xep_hang[i,1]))
-                {
-                    bang_xep_hang[i, 1] = diem_max.ToString();
-                    bang_xep_hang[i,0] = Ten_nguoi_choi;
-                }
-            }
-            Ghi_nhan("ThanhTich.txt");
 
         }
 
@@ -186,7 +139,7 @@ namespace Du_an_cuoi_ki
             }
         }
 
-            private void PauseGame()
+        private void PauseGame()
         {
             pause = true;
             RacDichuyen.Stop(); // Dừng Timer rác di chuyển
@@ -196,7 +149,7 @@ namespace Du_an_cuoi_ki
 
             // Hiển thị thông báo Pause (nếu cần)
             label1.Visible = true;
-            label1.Text = "PAUSE - PRESS SPACE";
+            label1.Text = "PAUSE";
         }
 
         private void ResumeGame()
@@ -208,7 +161,7 @@ namespace Du_an_cuoi_ki
             // Ẩn thông báo Pause
             label1.Visible = false;
         }
-        
+
 
         private void Gameplay_KeyUp(object sender, KeyEventArgs e)
         {
@@ -268,7 +221,7 @@ namespace Du_an_cuoi_ki
             // Lưu danh mục của rác vào Tag (1, 2, hoặc 3)
             rac.Tag = danhMuc;
 
-            // Thêm rác vào danh sách và giao diện
+            // Thêm rác vào danh sách và giao diệns
             racList.Add(rac);
             this.Controls.Add(rac);
         }
@@ -277,16 +230,16 @@ namespace Du_an_cuoi_ki
         {
             if (diem == null) return;
             diem = diem + 5;
-            if (diem > diem_max) diem_max = diem;
+
             An_diem.controls.play();
             An_diem.settings.volume = 20;
             Scorelabel.Visible = true;
             Scorelabel.Text = $"Score: {diem}";
-            if (diem-30 >= pointsToNextLevel)
+            if (diem - 30 >= pointsToNextLevel)
             {
                 level++; // Tăng cấp độ
                 pointsToNextLevel += 30; // Tăng ngưỡng điểm cho cấp độ tiếp theo
-                td_roi+=level; // Tăng tốc độ rơi rác
+                td_roi += level; // Tăng tốc độ rơi rác
                 UpdateLevelDisplay(); // Cập nhật giao diện cấp độ
             }
 
@@ -299,7 +252,7 @@ namespace Du_an_cuoi_ki
         public void Tru_nhe()
         {
             diem = diem - 3;
-            
+
             Tru_diem_nhe.controls.play();
             Tru_diem_nhe.settings.volume = 50;
             Scorelabel.Visible = true;
@@ -337,21 +290,21 @@ namespace Du_an_cuoi_ki
                 }
 
                 // Kiểm tra va chạm với từng nhân vật
-                if (rac.Bounds.IntersectsWith(Player1.Bounds))
+                if (Player1.Visible && rac.Bounds.IntersectsWith(Player1.Bounds))
                 {
                     HandleCollision(rac, Player1);
                 }
-                else if (rac.Bounds.IntersectsWith(Player2.Bounds))
+                else if (Player2.Visible && rac.Bounds.IntersectsWith(Player2.Bounds))
                 {
                     HandleCollision(rac, Player2);
                 }
-                else if (rac.Bounds.IntersectsWith(Player3.Bounds))
+                else if (Player3.Visible && rac.Bounds.IntersectsWith(Player3.Bounds))
                 {
                     HandleCollision(rac, Player3);
                 }
             }
 
-            if (diem <= 0) GameOver();
+            if (diem < 0) GameOver();
             if (racList.Count < 3)
             {
                 SpawnRac(); // Tạo thêm rác khi số lượng ít
@@ -362,51 +315,59 @@ namespace Du_an_cuoi_ki
         private void HandleCollision(PictureBox rac, PictureBox player)
         {
             int danhMuc = (int)rac.Tag;  // Lấy danh mục của rác từ Tag
-
-            // Kiểm tra nếu nhân vật có thể bắt được loại rác này
             bool isValid = false;
 
             // Dựa vào danh mục và nhân vật để kiểm tra
-            if (player == Player1 && danhMuc == 1) // Player1 có thể bắt loại rác danh mục 1
+            if (Player1.Visible && player == Player1 && danhMuc == 1)
                 isValid = true;
-            else if (player == Player2 && danhMuc == 2) // Player2 có thể bắt loại rác danh mục 2
+            else if (Player2.Visible && player == Player2 && danhMuc == 2)
                 isValid = true;
-            else if (player == Player3 && danhMuc == 3) // Player3 có thể bắt loại rác danh mục 3
+            else if (Player3.Visible && player == Player3 && danhMuc == 3)
                 isValid = true;
 
             if (isValid)
             {
-                Tang_diem(); // Truyền vào danh mục để có thể xử lý các điểm khác nhau cho từng loại
+                Tang_diem(); // Thêm điểm nếu đúng loại
             }
             else
             {
-                // Logic trừ điểm khi bắt sai loại rác
-                Tru_nhe();
+                Tru_nhe(); // Trừ điểm nếu sai loại
             }
 
-            // Xóa rác sau khi va chạm
+            // Loại bỏ rác sau khi xử lý
             this.Controls.Remove(rac);
             racList.Remove(rac);
+
+            // Kiểm tra nếu điểm < 0 để kết thúc trò chơi
+            if (diem < 0)
+                GameOver();
         }
 
         private void Gameplay_Load(object sender, EventArgs e)
         {
-            label3.Text = Ten_nguoi_choi;
-            Thanh_tich("ThanhTich.txt");
+
         }
 
         private void REPLAY_Click(object sender, EventArgs e)
         {
-            this.Controls.Clear();
-            InitializeComponent();
-            Application.Restart();
+            try
+            {
+                this.Controls.Clear();
+                InitializeComponent();
+                Application.Restart();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi khởi động lại trò chơi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void exit_Click(object sender, EventArgs e)
         {
-            Environment.Exit(1);
+            Environment.Exit(0);
         }
 
-        
+
+
     }
 }

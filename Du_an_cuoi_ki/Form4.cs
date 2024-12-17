@@ -57,5 +57,10 @@ namespace Du_an_cuoi_ki
             TaoBang();
             Doc_File("ThanhTich.txt");
         }
+
+        private void bang_xep_hang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

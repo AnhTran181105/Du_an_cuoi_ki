@@ -31,7 +31,7 @@ namespace Du_an_cuoi_ki
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form form = new Gameplay(ten);
+            Form form = new Gameplay();
             form.ShowDialog();
         }
 

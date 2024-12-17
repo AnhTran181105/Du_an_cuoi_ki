@@ -83,6 +83,16 @@ namespace Du_an_cuoi_ki.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap organic_waste1 {
+            get {
+                object obj = ResourceManager.GetObject("organic-waste1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rac1 {
             get {
                 object obj = ResourceManager.GetObject("rac1", resourceCulture);
@@ -236,6 +246,16 @@ namespace Du_an_cuoi_ki.Properties {
         internal static System.Drawing.Bitmap recycle_bin {
             get {
                 object obj = ResourceManager.GetObject("recycle-bin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash_9787077 {
+            get {
+                object obj = ResourceManager.GetObject("trash_9787077", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
