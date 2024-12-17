@@ -61,12 +61,42 @@ namespace Du_an_cuoi_ki.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] andiem {
+            get {
+                object obj = ResourceManager.GetObject("andiem", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] andiem1 {
+            get {
+                object obj = ResourceManager.GetObject("andiem1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Chủ_thể_2_1 {
             get {
                 object obj = ResourceManager.GetObject("Chủ thể(2)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] nhacnen {
+            get {
+                object obj = ResourceManager.GetObject("nhacnen", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

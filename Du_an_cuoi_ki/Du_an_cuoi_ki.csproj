@@ -373,6 +373,9 @@
   <ItemGroup>
     <None Include="Resources\organic-waste2.png" />
     <None Include="Resources\trash_9787077.png" />
+    <None Include="Resources\nhacnen.mp3" />
+    <None Include="Resources\andiem.mp3" />
+    <None Include="Resources\andiem1.mp3" />
     <Content Include="ThanhTich.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

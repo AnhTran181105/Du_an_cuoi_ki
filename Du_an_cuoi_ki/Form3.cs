@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,26 @@ namespace Du_an_cuoi_ki
         WindowsMediaPlayer An_diem;
         WindowsMediaPlayer Tru_diem_nhe;
         WindowsMediaPlayer Tru_diem_nang;
-        WindowsMediaPlayer Nhac_nen;
+        WindowsMediaPlayer nhacnen;
+        // Hàm chuyển file từ Resources thành file tạm thời
+        private string ChuyenFileTuResources(byte[] resource, string extension)
+        {
+            string tempPath = Path.GetTempFileName() + extension; // Đường dẫn file tạm
+            File.WriteAllBytes(tempPath, resource);               // Ghi dữ liệu từ Resources vào file tạm
+            return tempPath;                                      // Trả về đường dẫn file tạm
+        }
+        private void KhoiTaoAmThanh()
+        {
+            // Nhạc nền
+            nhacnen = new WindowsMediaPlayer();
+            nhacnen.URL = ChuyenFileTuResources(Properties.Resources.nhacnen, ".mp3");
+            nhacnen.settings.setMode("loop", true); // Lặp lại nhạc nền
+            nhacnen.controls.play();
+        }
         int player_speed = 4;
         int td_roi = 4;
         int diem = 30;
+        int sorachungdung;
         string[,] bang_xep_hang = new string[10, 10];
         private List<PictureBox> racList = new List<PictureBox>();
         private Random rnd = new Random();
@@ -41,25 +58,23 @@ namespace Du_an_cuoi_ki
             An_diem = new WindowsMediaPlayer();
             Tru_diem_nhe = new WindowsMediaPlayer();
             Tru_diem_nang = new WindowsMediaPlayer();
-            Nhac_nen = new WindowsMediaPlayer();
+            nhacnen = new WindowsMediaPlayer();
             // Tao duong dan
-            An_diem.URL = "Sound\\Trừ điểm nhẹ.mp3";
+            An_diem.URL = ChuyenFileTuResources(Properties.Resources.andiem1, ".mp3");
             Tru_diem_nhe.URL = "Sound\\Trừ điểm nhẹ.mp3";
             Tru_diem_nang.URL = "Sound\\Trừ điểm nặng.mp3";
-            Nhac_nen.URL = "Sound\\Nhạc nền.mp3";
             // Setting 
-            Nhac_nen.settings.setMode("", true);
-            Nhac_nen.settings.volume = 15;
             Player2.Visible = false;
             Player3.Visible = false;
             UpdateLevelDisplay();
             SpawnRac();
+            KhoiTaoAmThanh();
         }
 
         private void GameOver()
         {
             RacDichuyen.Stop();
-            Nhac_nen.controls.stop();
+            nhacnen.controls.stop();
             label1.Visible = true;
             exit.Visible = true;
             REPLAY.Visible = true;
@@ -141,11 +156,13 @@ namespace Du_an_cuoi_ki
 
         private void PauseGame()
         {
+            RightMove.Stop();
+            LeftMove.Stop();
             pause = true;
             RacDichuyen.Stop(); // Dừng Timer rác di chuyển
             RightMove.Stop();   // Dừng Timer di chuyển nhân vật sang phải
             LeftMove.Stop();    // Dừng Timer di chuyển nhân vật sang trái
-            Nhac_nen.controls.pause(); // Tạm dừng nhạc nền
+            nhacnen.controls.pause(); // Tạm dừng nhạc nền
 
             // Hiển thị thông báo Pause (nếu cần)
             label1.Visible = true;
@@ -156,7 +173,7 @@ namespace Du_an_cuoi_ki
         {
             pause = false;
             RacDichuyen.Start(); // Tiếp tục Timer rác di chuyển
-            Nhac_nen.controls.play(); // Tiếp tục nhạc nền
+            nhacnen.controls.play(); // Tiếp tục nhạc nền
 
             // Ẩn thông báo Pause
             label1.Visible = false;
@@ -230,18 +247,21 @@ namespace Du_an_cuoi_ki
         {
             if (diem == null) return;
             diem = diem + 5;
-
+            int highestscore =+ diem;
+            sorachungdung++;
             An_diem.controls.play();
             An_diem.settings.volume = 20;
             Scorelabel.Visible = true;
             Scorelabel.Text = $"Score: {diem}";
-            if (diem - 30 >= pointsToNextLevel)
+            if (highestscore - 30 >= pointsToNextLevel)
             {
                 level++; // Tăng cấp độ
                 pointsToNextLevel += 30; // Tăng ngưỡng điểm cho cấp độ tiếp theo
                 td_roi += level; // Tăng tốc độ rơi rác
                 UpdateLevelDisplay(); // Cập nhật giao diện cấp độ
             }
+            message.Visible = true;
+            message.Text = $"So rac da hung duoc dung cach la: {sorachungdung}";
 
         }
         private void UpdateLevelDisplay()
@@ -287,6 +307,7 @@ namespace Du_an_cuoi_ki
                 {
                     this.Controls.Remove(rac); // Xóa khỏi giao diện
                     racList.Remove(rac);      // Xóa khỏi danh sách
+                    Tru_nang();
                 }
 
                 // Kiểm tra va chạm với từng nhân vật
@@ -354,7 +375,7 @@ namespace Du_an_cuoi_ki
             {
                 this.Controls.Clear();
                 InitializeComponent();
-                Application.Restart();
+                
             }
             catch (Exception ex)
             {
