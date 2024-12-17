@@ -329,7 +329,7 @@ namespace Du_an_cuoi_ki
                 Tru_diem_nang.settings.volume = 100;
             }
 
-            diem -= 100;
+            diem -= 1;
             Scorelabel.Text = $"Score: {diem}";
         }
 
