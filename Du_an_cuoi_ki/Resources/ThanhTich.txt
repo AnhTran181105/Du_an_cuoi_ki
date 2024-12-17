@@ -1,0 +1,10 @@
+﻿Dương,88
+Mạnh,84
+Tùng,76
+Rứa,65
+Uyên,55
+Oanh,47
+Nam,45
+Giang,42
+Lâm,40
+Z,35
